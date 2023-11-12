@@ -1,16 +1,53 @@
 package com.projects.plataformaDeCursosOnline.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Curso {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
 	private String categoria;
+	
+	private String nome, descricao, materia;
+	private List<Aluno> ListaAluno;
+	
+
+    public void setListaAluno(List<Aluno> listaAluno) {
+        this.listaAluno = listaAluno;
+    }
+	    
+	public Curso() {
+	
+	}
+	
+	public Curso(String nome, String descricao, String materia) {
+		this.nome = nome;
+		this.descricao = descricao;
+		this.materia= materia;
+		this.ListaAluno = new ArrayList<Aluno>();
+	}
+	
+	public void adicionaAlunoLista(Aluno aluno) {
+        ListaAluno.add(aluno);
+    }
+	
+	public void modificarCurso(Curso curso) {
+        this.nome = curso.nome;
+        this.descricao = curso.descricao;
+        this.materia = curso.materia;
+        this.ListaAluno = curso.ListaAluno;
+    }
+	
+
 	
 	
 	@Override
@@ -53,13 +90,29 @@ public class Curso {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
 
 	public String getCategoria() {
 		return categoria;
 	}
-
+	
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+	
+	   @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
+	    private List<Aluno> listaAluno = new ArrayList<>();
+
+	    // Getters e Setters
+	    public List<Aluno> getListaAluno() {
+	        return listaAluno;
+	    }
 
 }
