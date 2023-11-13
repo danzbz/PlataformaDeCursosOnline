@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Aluno {
@@ -20,6 +21,14 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	private String nome, cpf, sexo;
+	@OneToMany(mappedBy = "aluno")
+	private List<Trilha> ListaTrilhasInscrita;
+	@ManyToOne
+	private Curso curso;
+	
+	public Aluno() {
+		
+	}
 
 	public Aluno(String nome, String cpf, String sexo) {
 		this.nome = nome;
@@ -34,28 +43,29 @@ public class Aluno {
         this.sexo = aluno.sexo;
     }
 	
-	public void inscreverNaTrilha(Trilha trilha) {
+	/*public void inscreverNaTrilha(Trilha trilha) {
 		if (!ListaTrilhasInscrita.contains(trilha)) {
 			ListaTrilhasInscrita.add(trilha);
 	        trilha.inscreverAluno(this);
 		}
-	}
+	}*/
 
 	public List<Trilha> getTrilhasInscritas() {
 		return ListaTrilhasInscrita;
 	}
 	
+    public String getNome() {
+        return nome;
+    }
 
-    
-	 @ManyToMany(mappedBy = "alunos")
-	 private List<Trilha> ListaTrilhasInscrita;
-    
-    @ManyToOne
-    @JoinColumn(name = "curso_id")
-    private Curso curso;
-	
+    public String getCpf() {
+        return cpf;
+    }
 
-    // Getters e Setters
+    public String getSexo() {
+        return sexo;
+    }
+
     public Curso getCurso() {
         return curso;
     }

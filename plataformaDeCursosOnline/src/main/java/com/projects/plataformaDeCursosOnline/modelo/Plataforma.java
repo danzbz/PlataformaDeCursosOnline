@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Plataforma {
@@ -16,6 +17,8 @@ public class Plataforma {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	private String descricao;
+	
+	@OneToMany(mappedBy = "plataforma")
 	private List<Trilha> ListaTrilha;
 	
 	public Plataforma(String descricao) {

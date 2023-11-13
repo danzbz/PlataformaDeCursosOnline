@@ -34,7 +34,7 @@ public class BDDEstudanteTrilhaTest {
         Aluno aluno = new Aluno("Danilo de Paula Vieira", "123456789", "Masculino");
 
         Trilha trilhaFrontEnd = new Trilha("Trilha de Estudos Front End", "Descrição da Trilha De estudos Front End");
-        aluno.inscreverNaTrilha(trilhaFrontEnd);
+        /*aluno.inscreverNaTrilha(trilhaFrontEnd);*/
         
         assertTrue(aluno.getTrilhasInscritas().contains(trilhaFrontEnd));
     }

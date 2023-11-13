@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Trilha {
@@ -16,18 +17,21 @@ public class Trilha {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	private String nome, descricao;
+	@OneToMany(mappedBy = "trilha")
 	private List<Curso> ListaCurso;
-	private List<Aluno> ListaAlunoInscrito;
+	/*private List<Aluno> ListaAlunoInscrito;*/
 	
-    @ManyToMany(mappedBy = "listaTrilhasInscrita")
-    private List<Aluno> alunos = new ArrayList<>();
+	@ManyToOne
+	private Plataforma plataforma;
+	
+	@ManyToOne
+	private Aluno aluno;
 
-    
 	public Trilha(String nome, String descricao) {
 		this.nome = nome;
 		this.descricao = descricao;
 		this.ListaCurso = new ArrayList<Curso>();
-		this.ListaAlunoInscrito = new ArrayList<Aluno>();
+		/*this.ListaAlunoInscrito = new ArrayList<Aluno>();*/
 	}
 
 	public String getNome() {
@@ -52,16 +56,16 @@ public class Trilha {
         this.ListaCurso = trilha.ListaCurso;
 	}
 
-	public void inscreverAluno(Aluno aluno) {
+	/*public void inscreverAluno(Aluno aluno) {
 		if (!ListaAlunoInscrito.contains(aluno)) {
 			ListaAlunoInscrito.add(aluno);
 			aluno.inscreverNaTrilha(this);
 		}
-	}
+	}*/
 
-	public List<Aluno> getAlunosInscritos() {
+	/*public List<Aluno> getAlunosInscritos() {
 		return ListaAlunoInscrito;
-	}
+	}*/
 	
 	  // Getters e Setters
     public Long getId() {

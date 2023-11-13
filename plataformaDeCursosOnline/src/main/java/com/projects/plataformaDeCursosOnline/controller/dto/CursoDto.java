@@ -46,4 +46,8 @@ public class CursoDto {
     public static List<CursoDto> converter(List<Curso> cursos) {
         return cursos.stream().map(CursoDto::new).collect(Collectors.toList());
     }
+    
+    public static CursoDto converter(Curso curso) {
+        return new CursoDto(curso);
+    }
 }
