@@ -14,10 +14,11 @@ public class CursoDto {
     private String categoria;
 
     public CursoDto(Curso curso) {
-        this.id = curso.getId();
+        /*this.id = curso.getId();*/
         this.nome = curso.getNome();
         this.descricao = curso.getDescricao();
         this.categoria = curso.getCategoria();
+        this.materia = curso.getMateria();
     }
 
     // Getters

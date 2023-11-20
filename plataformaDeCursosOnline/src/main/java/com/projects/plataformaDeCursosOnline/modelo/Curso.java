@@ -109,6 +109,10 @@ public class Curso {
 		return categoria;
 	}
 	
+	  public String getMateria() {
+	        return materia;
+	    }
+	
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}

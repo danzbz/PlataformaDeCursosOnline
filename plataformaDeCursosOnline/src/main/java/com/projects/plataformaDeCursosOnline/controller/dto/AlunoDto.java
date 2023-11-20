@@ -12,7 +12,7 @@ public class AlunoDto {
     private String nome;
     private String cpf;
     private String sexo;
-
+    
     public AlunoDto(Aluno aluno) {
         this.id = aluno.getId();
         this.nome = aluno.getNome();
@@ -47,5 +47,6 @@ public class AlunoDto {
     public String getSexo() {
         return sexo;
     }
+
 
 }
