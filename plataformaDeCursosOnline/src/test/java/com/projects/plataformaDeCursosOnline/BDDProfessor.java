@@ -1,21 +1,19 @@
-package com.projects.plataformaDeCursosOnline;
+/*package com.projects.plataformaDeCursosOnline;
 import static org.junit.Assert.assertEquals;
 import java.util.Iterator;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.projects.plataformaDeCursosOnline.modelo.Aluno;
+import com.projects.plataformaDeCursosOnline.modelo.Professor;
 import com.projects.plataformaDeCursosOnline.modelo.Curso;
 import com.projects.plataformaDeCursosOnline.modelo.Plataforma;
 import com.projects.plataformaDeCursosOnline.modelo.Trilha;
 
-
-
-public class BDDEdicao{
+public class BDDProfessor{
 
     private Plataforma plataforma;
-    private Aluno aluno1, aluno2, aluno3, aluno4, aluno5;
+    private Professor professor1, professor2;
     private Curso curso1, curso2, curso3;
     private Trilha trilha1, trilha2;
     private double i = 0.0;
@@ -29,21 +27,15 @@ public class BDDEdicao{
 		curso2 = new Curso("Web Development", "Curso de desenvolvimento web", "Web");
 		curso3 = new Curso("Machine Learning", "Curso de aprendizado de máquina", "ML");
 		
-		aluno1 = new Aluno("João","123.456.789-00", "Masculino");
-		aluno2 = new Aluno("Maria","133.456.789-00", "Feminino");
-		aluno3 = new Aluno("Pedro", "124.456.789-00", "Masculino");
-		aluno4 = new Aluno("Ana", "125.456.789-00", "Feminino");
-		aluno5 = new Aluno("Luiz", "126.456.789-00", "Masculino");
+		professor1 = new Professor("João","123.456.789-00", "Masculino");
+		professor2 = new Professor("Josefina","133.456.789-00", "Feminino");
     }
 
     @Test
     public void testEditarTrilhaExistente() {
     	//ARANGE
-    	curso1.adicionaAlunoLista(aluno1);
-    	curso1.adicionaAlunoLista(aluno2);
-    	curso2.adicionaAlunoLista(aluno3);
-    	curso2.adicionaAlunoLista(aluno4);
-    	curso3.adicionaAlunoLista(aluno5);
+    	curso1.adicionaProfessorLista(professor1);
+    	curso1.adicionaProfessorLista(professor2);
 		
     	trilha1.adicionaCursoLista(curso1);
     	trilha1.adicionaCursoLista(curso2);
@@ -69,4 +61,4 @@ public class BDDEdicao{
     	assertEquals(i, 1.0, 0.0001);
     }
     
-}
+}*/

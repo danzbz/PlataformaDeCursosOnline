@@ -20,18 +20,23 @@ public class Trilha {
 	@OneToMany(mappedBy = "trilha")
 	private List<Curso> ListaCurso;
 	/*private List<Aluno> ListaAlunoInscrito;*/
+	/*private List<Professor> ListaProfessorInscrito;*/
 	
 	@ManyToOne
 	private Plataforma plataforma;
 	
 	@ManyToOne
 	private Aluno aluno;
+	
+	@ManyToOne
+	private Professor professor;
 
 	public Trilha(String nome, String descricao) {
 		this.nome = nome;
 		this.descricao = descricao;
 		this.ListaCurso = new ArrayList<Curso>();
 		/*this.ListaAlunoInscrito = new ArrayList<Aluno>();*/
+		/*this.ListaProfessorInscrito = new ArrayList<Professor>();*/
 	}
 
 	public String getNome() {
@@ -66,6 +71,17 @@ public class Trilha {
 	/*public List<Aluno> getAlunosInscritos() {
 		return ListaAlunoInscrito;
 	}*/
+	
+	/*public void inscreverProfessor(Professor professor) {
+	if (!ListaProfessorInscrito.contains(professor)) {
+		ListaProfessorInscrito.add(professor);
+		professor.inscreverNaTrilha(this);
+	}
+}*/
+
+/*public List<Professor> getProfessorInscritos() {
+	return ListaProfessorInscrito;
+}*/
 	
 	  // Getters e Setters
     public Long getId() {

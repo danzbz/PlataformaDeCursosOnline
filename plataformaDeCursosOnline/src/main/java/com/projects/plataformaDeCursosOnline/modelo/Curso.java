@@ -23,12 +23,19 @@ public class Curso {
 	@OneToMany(mappedBy = "curso")
 	private List<Aluno> ListaAluno;
 	
+	@OneToMany(mappedBy = "curso")
+	private List<Professor> ListaProfessor;
+	
 	@ManyToOne
 	private Trilha trilha;
 	
 
     public void setListaAluno(List<Aluno> listaAluno) {
         this.listaAluno = listaAluno;
+    }
+    
+    public void setListaProfessor(List<Professor> listaProfessor) {
+        this.listaProfessor = listaProfessor;
     }
 	    
 	public Curso() {
@@ -40,10 +47,15 @@ public class Curso {
 		this.descricao = descricao;
 		this.materia= materia;
 		this.ListaAluno = new ArrayList<Aluno>();
+		this.ListaProfessor = new ArrayList<Professor>();
 	}
 	
 	public void adicionaAlunoLista(Aluno aluno) {
         ListaAluno.add(aluno);
+    }
+	
+	public void adicionaProfessorLista(Professor professor) {
+        ListaProfessor.add(professor);
     }
 	
 	public void modificarCurso(Curso curso) {
@@ -51,6 +63,7 @@ public class Curso {
         this.descricao = curso.descricao;
         this.materia = curso.materia;
         this.ListaAluno = curso.ListaAluno;
+        this.ListaProfessor = curso.ListaProfessor;
     }
 	
 
@@ -123,6 +136,14 @@ public class Curso {
 	    // Getters e Setters
 	    public List<Aluno> getListaAluno() {
 	        return listaAluno;
+	    }
+	    
+	    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
+	    private List<Professor> listaProfessor = new ArrayList<>();
+
+	    // Getters e Setters
+	    public List<Professor> getListaProfessor() {
+	        return listaProfessor;
 	    }
 
 }
