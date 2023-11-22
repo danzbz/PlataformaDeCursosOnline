@@ -17,15 +17,16 @@ pipeline {
       }
     }
     
+    
     stage('Start container') {
     steps {
-        bat 'docker-compose up -d --no-color --wait'
-        bat 'docker-compose ps'
+        dir('plataformaDeCursosOnline') {
+            bat 'docker-compose up -d --no-color --wait'
+            bat 'docker-compose ps'
+        }
     }
 }
-    
-    
-    
+ 
     
     stage('Run tests against the container') {
       steps {
