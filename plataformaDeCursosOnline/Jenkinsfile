@@ -16,12 +16,26 @@ pipeline {
         bat 'docker system prune -a --volumes -f'
       }
     }
+    
+    
     stage('Start container') {
       steps {
         bat 'docker compose up -d --no-color --wait'
         bat 'docker compose ps'
       }
     }
+    
+    
+    stage('Start container') {
+    steps {
+        bat 'docker-compose -f /PlataformaDeCursosOnlinePipeline/plataformaDeCursosOnline/docker-compose.yml up -d --no-color --wait'
+        bat 'docker-compose -f /PlataformaDeCursosOnlinePipeline/plataformaDeCursosOnline/docker-compose.yml ps'
+    }
+}
+    
+    
+    
+    
     stage('Run tests against the container') {
       steps {
         bat 'curl http://localhost:9090'
