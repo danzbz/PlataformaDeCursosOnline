@@ -16,8 +16,6 @@ pipeline {
         bat 'docker system prune -a --volumes -f'
       }
     }
-    
-    
     stage('Start container') {
     steps {
         dir('plataformaDeCursosOnline') {
@@ -26,13 +24,10 @@ pipeline {
         }
     }
 }
- 
-    
     stage('Run tests against the container') {
       steps {
         bat 'curl http://localhost:9090'
       }
     }
   }
-  
 }
