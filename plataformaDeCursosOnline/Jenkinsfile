@@ -11,18 +11,21 @@ pipeline {
           '''
       }
     }
+    
     stage('Prune Docker data') {
       steps {
         bat 'docker system prune -a --volumes -f'
       }
     }
+    
     stage('Start container') {
     steps {
         dir('plataformaDeCursosOnline') {
             bat 'docker-compose up -d --no-color --wait'
             bat 'docker-compose ps'
-        }
-    }
+        	}
+    	}
+	}
     
     stage('Wait for container to start') {
     steps {
@@ -31,7 +34,6 @@ pipeline {
         }
       }
     }
-}
 
     stage('Run tests against the container') {
       steps {
