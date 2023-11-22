@@ -30,7 +30,7 @@ pipeline {
     stage('Wait for container to start') {
     steps {
         script {
-          sleep 5
+          sleep 10
         }
       }
     }
