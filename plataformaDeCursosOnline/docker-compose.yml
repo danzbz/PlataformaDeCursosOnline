@@ -10,7 +10,7 @@ services:
     - db-volume:/var/lib/postgresql/data
 
   api:
-    image: cursoonlineimagedocker/praticando-api
+    image: cursoonlineimagedocker
     environment:
       DB_HOST: database
     ports:
