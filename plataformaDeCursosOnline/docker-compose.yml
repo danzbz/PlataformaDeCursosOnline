@@ -10,7 +10,7 @@ services:
     - db-volume:/var/lib/postgresql/data
 
   api:
-    image: imagemapi/image-docker
+    image: imagemapi/cursoonlineimage-docker
     environment:
       DB_HOST: database
     ports:
